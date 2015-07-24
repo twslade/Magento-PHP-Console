@@ -29,6 +29,9 @@ if(array_key_exists('a', $params) && $params['a'] == 'debug' && array_key_exists
     $siteDirectory = $projects->getDirectoryFromSiteName($site);
 
     $mageFile = $siteDirectory . 'app/Mage.php';
+
+    if(!file_exists($mageFile)) $mageFile = $siteDirectory . 'webroot/app/Mage.php';
+
     if(file_exists($mageFile)){
         require_once $mageFile;
         Varien_Profiler::enable();
